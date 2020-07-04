@@ -1,0 +1,85 @@
+<!--
+  Generated template for the HasilScanPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+
+
+</ion-header>
+
+
+<ion-content padding>
+
+      <ion-card>
+        <ion-item class="activated">
+         
+          <ion-label>Data Hasil Scan</ion-label>
+        </ion-item>
+      
+        <ion-item>
+         
+          <div [hidden]="!data_object.nama_aset">Nama Aset : {{data_object.nama_aset}}</div>
+          <div [hidden]="!data_object.kode_aset">Kode Aset : {{data_object.kode_aset}}</div>
+          <div [hidden]="!data_object.register">Register : {{data_object.register}}</div>
+          <div [hidden]="!data_object.luas">Luas : {{data_object.luas}}</div>
+          <div [hidden]="!data_object.tahun_pengadaan">Tahun Pengadaan : {{data_object.tahun_pengadaan}}</div>
+          <div [hidden]="!data_object.alamat">Alamat : {{data_object.alamat}}</div>
+          <div [hidden]="!data_object.status_tanah">Status Tanah : {{data_object.status_tanah}}</div>
+          <div [hidden]="!data_object.tanggal_sertifikat">Tanggal Sertifikat : {{data_object.tanggal_sertifikat}}</div>
+          <div [hidden]="!data_object.nomor_sertifikat">Nomor Sertifikat : {{data_object.nomor_sertifikat}}</div> 
+          <div [hidden]="!data_object.asal_usul">Asal-usul : {{data_object.asal_usul}}</div>
+          <div [hidden]="!data_object.harga">Harga : Rp{{data_object.harga|number}}</div>
+          <div [hidden]="!data_object.kondisi">Kondisi : {{data_object.kondisi}}</div>
+          <div [hidden]="!data_object.keterangan">Keterangan : {{data_object.keterangan}}</div>
+          <div [hidden]="!data_object.kode_lokasi">Kode Lokasi : {{data_object.kode_lokasi}}</div>
+          <div [hidden]="!data_object.ukuran">Ukuran : {{data_object.Ukuran}}</div>
+
+  <!--  AMBIL kolom KIB A untuk ditampilkan. 
+  Penjelasan kode diatas : Jika data terisi, maka tampilkan. Kalau tidak ada, tidak usah ditampilkan-->
+
+
+          <div [hidden]="!data_object.merk">Merk : {{data_object.merk}}</div>
+          <div [hidden]="!data_object.bahan">Bahan : {{data_object.bahan}}</div>
+          <div [hidden]="!data_object.lokasi">Lokasi : {{data_object.lokasi}}</div>
+          <div [hidden]="!data_object.pabrik">Pabrik : {{data_object.pabrik}}</div> 
+          <div [hidden]="!data_object.no_rangka">Nomor Rangka : {{data_object.no_rangka}}</div>
+          <div [hidden]="!data_object.no_mesin">Nomor Mesin : {{data_object.no_mesin}}</div>
+          <div [hidden]="!data_object.no_polisi">Nomor Polisi : {{data_object.no_polisi}}</div>      
+          <div [hidden]="!data_object.bpkb">BPKB : {{data_object.bpkb}}</div> 
+          <!-- KIB B -->
+
+          <div [hidden]="!data_object.penggunaan">Penggunaan : {{data_object.penggunaan}}</div> 
+          <div [hidden]="!data_object.bertingkat">Bertingkat : {{data_object.bertingkat}}</div> 
+          <div [hidden]="!data_object.beton_tidak">Beton/Tidak : {{data_object.beton_tidak}}</div> 
+          <div [hidden]="!data_object.nomor_dokumen">Nomor Dokumen : {{data_object.nomor_dokumen}}</div> 
+          <div [hidden]="!data_object.tanggal_dokumen">Tanggal Dokumen : {{data_object.tanggal_dokumen}}</div> 
+          <div [hidden]="!data_object.nomor_kode_tanah">Nomor Kode Tanah : {{data_object.nomor_kode_tanah}}</div>
+          <div [hidden]="!data_object.luas_tanah">Luas Tanah : {{data_object.luas_tanah}}</div>
+          
+          <!-- KIB D -->
+          <div [hidden]="!data_object.Konstruksi">Konstruksi : {{data_object.Konstruksi}}</div>
+          <div [hidden]="!data_object.panjang">Panjang : {{data_object.panjang}}</div>
+          <div [hidden]="!data_object.lebar">Lebar : {{data_object.lebar}}</div> 
+          <div [hidden]="!data_object.luas">Luas : {{data_object.luas}}</div> 
+
+          <!-- KIB E -->
+          <div [hidden]="!data_object.spesifikasi_buku">Spesifikasi Buku : {{data_object.spesifikasi_buku}}</div> 
+          <div [hidden]="!data_object.judul_buku">Judul Buku : {{data_object.judul_buku}}</div> 
+          
+          <!-- KIB F -->
+          <div [hidden]="!data_object.Bangunan">Bangunan : {{data_object.Bangunan}}</div>
+          <div [hidden]="!data_object.tahun_bulan_mulai">Tahun Bulan Mulai : {{data_object.tahun_bulan_mulai}}</div>
+          <div [hidden]="!data_object.nilai_kontrak">Nilai Kontrak : {{data_object.nilai_kontrak}}</div>
+          <div [hidden]="!data_object.asal_usul_pembiayaan">Asal-Usul Pembiayaan : Rp{{data_object.asal_usul_pembiayaan|number}}</div>
+        </ion-item>
+      </ion-card>
+      <button ion-button color="success" full (click)="dismiss()">Kembali</button>
+
+  
+
+  
+
+</ion-content>

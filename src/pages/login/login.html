@@ -1,0 +1,20 @@
+<ion-content padding>
+    <ion-card>
+        <img img src="assets/imgs/icon.png"/>
+      </ion-card>
+  
+  <form [formGroup]="FormLogin" (ngSubmit)="login()">
+    <ion-item  >
+        <ion-label color="primary" stacked>NIP</ion-label>
+        <ion-input  type="text"  formControlName="nip" ></ion-input>
+      </ion-item>
+      <ion-item >
+        <ion-label color="primary" stacked>Password</ion-label>
+       
+        <ion-input type="password" formControlName="password" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button full type="submit" color="primary" [disabled]="!FormLogin.valid" >Login</button>
+      </ion-item>
+  </form>
+</ion-content>

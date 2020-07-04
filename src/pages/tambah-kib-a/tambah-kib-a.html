@@ -1,0 +1,241 @@
+<!--
+  Generated template for the TambahKibBPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+      <ion-navbar color="twitter">
+        <ion-title>Tambah KIB A</ion-title>
+      </ion-navbar>
+    
+    </ion-header>
+    
+    
+    <ion-content padding>
+        <div>
+            
+      
+            <div *ngIf="!hideForm">
+               <form [formGroup]="form" (ngSubmit)="save()">
+    
+                  <ion-list>
+                     <ion-item-group>
+                        <ion-item-divider color="light">Nama Aset</ion-item-divider>
+                        <ion-item>
+                         <ion-select [(ngModel)]="nama_aset" formControlName="nama_aset" (ionChange)="setKodeBarang()">
+                            <ion-option *ngFor="let item of items" value="{{item.nama_aset}}_{{item.kode_aset}}">{{item.nama_aset}}</ion-option>
+                       </ion-select>
+                      </ion-item>
+                      <div *ngIf="form.controls.nama_aset.hasError('required')">
+                            <font color="red">Harap pilih aset</font>
+                          </div>
+                     </ion-item-group>
+      
+                     <ion-item-group>
+                        <ion-item-divider color="light">Register</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="number"
+                              placeholder="Cth : 00005"
+                              [formControl]="form.controls['register']"
+                              [(ngModel)]="register"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.register.hasError('required')">
+                            <font color="red">Register tidak boleh kosong</font>
+                          </div>
+                          <div *ngIf="form.controls.register.hasError('maxlength') || form.controls.register.hasError('minlength')">
+                               <font color="red">Register harus 5 digit</font>
+                             </div>
+                             <div *ngIf="form.controls.register.hasError('pattern')">
+                                  <font color="red">Register harus angka</font>
+                                </div>
+                     </ion-item-group>
+      
+                     <ion-item-group>
+                        <ion-item-divider color="light">Kode Aset</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                           [readonly]="true"
+                              type="text"
+                              placeholder="kode Aset"
+                              [formControl]="form.controls['kode_aset']"
+                              [(ngModel)]="kode_aset"></ion-input>
+                        </ion-item>
+                     </ion-item-group>
+                     <ion-item-group>
+                        <ion-item-divider color="light">Luas</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="text"
+                              placeholder="Cth : 120M2"
+                              [formControl]="form.controls['luas']"
+                              [(ngModel)]="luas"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.luas.hasError('required')">
+                            <font color="red">Luas harus diisi. Jika tidak ada atau tidak diketahui, isi dengan '-'</font>
+                          </div>
+                     </ion-item-group>
+                     <ion-item-group>
+                        <ion-item-divider color="light">Alamat</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="textarea"
+                              placeholder="Cth : Jalan Teluk Tering no. 1, Batam"
+                              [formControl]="form.controls['alamat']"
+                              [(ngModel)]="alamat"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.alamat.hasError('required')">
+                            <font color="red">Alamat harus diisi. Jika tidak ada atau tidak diketahui, isi dengan '-'</font>
+                          </div>
+                     </ion-item-group>
+                     <ion-item-group>
+                        <ion-item-divider color="light">Status Tanah</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="text"
+                              placeholder="Cth : Sengketa"
+                              [formControl]="form.controls['status_tanah']"
+                              [(ngModel)]="status_tanah"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.status_tanah.hasError('required')">
+                            <font color="red">Status Tanah harus diisi. Jika tidak ada atau tidak diketahui, isi dengan '-'</font>
+                          </div>
+                          <div *ngIf="form.controls.status_tanah.hasError('pattern')">
+                               <font color="red">Status Tanah harus diisi dengan huruf</font>
+                             </div>
+                     </ion-item-group>
+    
+                     <ion-item-group>
+                        <ion-item-divider color="light">Tahun Pengadaan</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="text"
+                              placeholder="Tahun Pengadaan"
+                              [formControl]="form.controls['tahun_pengadaan']"
+                              [(ngModel)]="tahun_pengadaan"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.tahun_pengadaan.hasError('pattern')">
+                            <font color="red">Tahun Pengadaan harus angka</font>
+                          </div>
+                        <div *ngIf="form.controls.tahun_pengadaan.hasError('maxlength') || form.controls.tahun_pengadaan.hasError('minlength')">
+                            <font color="red">Tahun Pengadaan harus 4 digit</font>
+                          </div>
+                          <div *ngIf="form.controls.tahun_pengadaan.hasError('min')">
+                               <font color="red">Tahun Pengadaan harus lebih besar dari tahun 1989</font>
+                             </div>
+                             <div *ngIf="form.controls.tahun_pengadaan.hasError('max')">
+                                  <font color="red">Tahun Pengadaan harus lebih kecil dari tahun sekarang</font>
+                                </div>
+                                <div *ngIf="form.controls.tahun_pengadaan.hasError('required')">
+                                     <font color="red">Tahun Pengadaan harus diisi</font>
+                                   </div>
+                     </ion-item-group>
+      
+                     <ion-item-group>
+                        <ion-item-divider color="light">Tanggal Sertifikat</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="text"
+                              placeholder="Cth : 12-07-2014"
+                              [formControl]="form.controls['tanggal_sertifikat']"
+                              [(ngModel)]="tanggal_sertifikat"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.tanggal_sertifikat.hasError('required')">
+                           <font color="red">Nomor Sertifikat harus diisi. Jika tidak ada atau tidak diketahui, isi dengan '-'</font>
+                          </div>
+                         
+                     </ion-item-group>
+      
+                     <ion-item-group>
+                        <ion-item-divider color="light">Nomor Sertifikat</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="text"
+                              placeholder="Nomor Sertifikat"
+                              [formControl]="form.controls['no_sertifikat']"
+                              [(ngModel)]="no_sertifikat"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.no_sertifikat.hasError('required')">
+                            <font color="red">Nomor Sertifikat harus diisi. Jika tidak ada atau tidak diketahui, isi dengan '-'</font>
+                          </div>
+                     </ion-item-group>
+                  
+    
+                   
+                     <ion-item-group>
+                        <ion-item-divider color="light">Asal Usul</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="text"
+                              placeholder="Asal Usul"
+                              [formControl]="form.controls['asal_usul']"
+                              [(ngModel)]="asal_usul"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.asal_usul.hasError('required')">
+                            <font color="red">Asal-usul harus diisi</font>
+                          </div>
+                          <div *ngIf="form.controls.asal_usul.hasError('minlength')">
+                               <font color="red">Asal-usul minimal 5 karakter</font>
+                             </div>
+                     </ion-item-group>
+                   
+                     <ion-item-group>
+                        <ion-item-divider color="light">Harga</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="number"
+                              placeholder="Cth : 700000"
+                              [formControl]="form.controls['harga']"
+                              [(ngModel)]="harga"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.harga.hasError('min')">
+                            <font color="red">Harga minimal adalah Rp1</font>
+                          </div>
+                          <div *ngIf="form.controls.harga.hasError('required')">
+                               <font color="red">Harga aset harus diisi</font>
+                             </div>
+                     </ion-item-group>
+    
+                    
+                     <ion-item-group>
+                        <ion-item-divider color="light">Keterangan</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="text"
+                              placeholder="Keterangan"
+                              [formControl]="form.controls['keterangan']"
+                              [(ngModel)]="keterangan"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.keterangan.hasError('required')">
+                            <font color="red">Keterangan harus diisi. Jika tidak ada atau tidak diketahui, isi dengan '-'</font>
+                          </div>
+                     </ion-item-group>
+                     <ion-item-group>
+                        <ion-item-divider color="light">Kode Lokasi</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              readonly="true"
+                              type="text"
+                              placeholder="Kode Lokasi"
+                              formControlName="kode_lokasi"
+                              [(ngModel)]="kode_lokasi"></ion-input>
+                        </ion-item>
+                     </ion-item-group>
+                     <ion-item>
+                        <button
+                           ion-button
+                           color="primary"
+                           text-center
+                           block
+                           [disabled]="!form.valid">Save Entry</button>
+                     </ion-item>
+      
+                  </ion-list>
+      
+               </form>
+            </div>
+         </div>
+    </ion-content>
+    

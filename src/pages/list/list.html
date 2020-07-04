@@ -1,0 +1,45 @@
+<ion-content>
+<ion-header>
+    <ion-navbar color="twitter">
+          <button ion-button menuToggle icon-only>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      <ion-title>Beranda</ion-title>
+      <ion-buttons start>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding class="bg-image" text-center >
+
+      
+
+    </ion-content>
+
+
+  
+
+<ion-menu [content]="content">
+    <ion-header>
+      <ion-toolbar color="twitter">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <button ion-item (click)="goToverifikasi()"><ion-icon name="checkbox-outline"></ion-icon>
+          Verifikasi
+        </button>
+        <button color="twitter" ion-item (click)="goToqrcode()"><ion-icon name="qr-scanner"></ion-icon>
+           Scan QR Code
+        </button>
+        <button ion-item (click)="logout()"><ion-icon name="walk"></ion-icon>
+          Logout
+       </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  
+  <ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+  
+</ion-content>

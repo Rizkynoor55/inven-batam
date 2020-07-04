@@ -1,0 +1,60 @@
+<ion-header>
+
+    <ion-navbar color="twitter">
+      <ion-title>KIB B </ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding >
+  <ion-searchbar placeholder="Cari Asset.."  showCancelButton (ionInput)="CariAset($event)">
+    Search 
+  </ion-searchbar>
+  <ion-card-content>
+  <div *ngIf="items && items.length==0"><strong>Tidak Ada Data</strong></div>
+  </ion-card-content>
+
+  
+<ion-card *ngFor="let item of items">
+<ion-card-header>
+<h2>{{ item.kode_lokasi}}</h2>
+
+</ion-card-header>
+<ion-card-content>
+  <div style="word-wrap: break-word;">
+  <div>Kode Aset          : {{item.kode_aset}}</div>
+  <div>Nama Barang        : {{item.nama_aset}}</div>
+  <div>Harga              : Rp{{item.harga|number}}</div>
+  <div>Tahun Pengadaan    : {{item.tahun_pengadaan}}</div>
+  <div>ID Aset            : {{item.id_aset}}</div>
+  </div>
+  </ion-card-content>
+<ion-row>
+<ion-col>
+
+ 
+  <button [disabled]="item.kondisi=='RB'" ion-button icon-left clear small (click)="KondisiRB(item.id_aset,item.kode_lokasi)">
+    <ion-icon name="create"></ion-icon> Rubah Aset ke Kondisi RB
+</button>
+<button [disabled]="item.kondisi=='B'" ion-button icon-left clear small (click)="KondisiB(item.id_aset,item.kode_lokasi)">
+    <ion-icon name="create"></ion-icon> Rubah Aset ke Kondisi B
+</button>
+</ion-col>
+<ion-col>
+<button [disabled]="item.verifikator==''" ion-button icon-left clear small (click)="BatalVerifKibB(item.id_aset,item.kode_lokasi)">
+<ion-icon name="checkbox"></ion-icon> Batal Verifikasi
+</button>
+
+<button [disabled]="item.verifikator!=''" ion-button icon-left clear small (click)="VerifKibB(item.id_aset,item.kode_lokasi)">
+    <ion-icon name="checkbox"></ion-icon> Verifikasi
+    </button>
+</ion-col>
+
+</ion-row>
+</ion-card>
+<ion-fab right bottom> 
+   <button ion-fab color="twitter" (click)="tambah_kib_b()"><ion-icon name="add"></ion-icon></button>  
+   
+  </ion-fab>
+</ion-content>

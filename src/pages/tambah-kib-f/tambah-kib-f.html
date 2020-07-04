@@ -1,0 +1,289 @@
+<!--
+  Generated template for the TambahKibBPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+      <ion-navbar color="twitter">
+        <ion-title>Tambah KIB F</ion-title>
+      </ion-navbar>
+    
+    </ion-header>
+    
+    
+    <ion-content padding>
+        <div>
+            
+      
+            <div *ngIf="!hideForm">
+               <form [formGroup]="form" (ngSubmit)="save()">
+    
+                  <ion-list>
+                     <ion-item-group>
+                        <ion-item-divider color="light">Nama Aset</ion-item-divider>
+                        <ion-item>
+                         <ion-select [(ngModel)]="nama_aset" formControlName="nama_aset" (ionChange)="setKodeBarang()">
+                            <ion-option *ngFor="let item of items" value="{{item.nama_aset}}_{{item.kode_aset}}">{{item.nama_aset}}</ion-option>
+                       </ion-select>
+                      </ion-item>
+                      <div *ngIf="form.controls.nama_aset.hasError('required')">
+                            <font color="red">Harap pilih aset</font>
+                          </div>
+                     </ion-item-group>
+   
+                     <ion-item-group>
+                        <ion-item-divider color="light">Kode Aset</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                           [readonly]="true"
+                              type="text"
+                              placeholder="kode Aset"
+                              [formControl]="form.controls['kode_aset']"
+                              [(ngModel)]="kode_aset"></ion-input>
+                        </ion-item>
+                     </ion-item-group>
+      
+                     <ion-item-group>
+                        <ion-item-divider color="light">Tipe Bangunan</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="text"
+                              placeholder="Bangunan 1 lantai"
+                              [formControl]="form.controls['bangunan']"
+                              [(ngModel)]="bangunan"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.bangunan.hasError('required')">
+                            <font color="red">Tipe Bangunan tidak boleh kosong. Jika tidak ada atau tidak diketahui isi dengan '-'</font>
+                          </div>
+                          
+                     </ion-item-group>
+
+                     <ion-item-group>
+                           <ion-item-divider color="light">Nomor Kode Tanah</ion-item-divider>
+                           <ion-item>
+                              <ion-input
+                                 type="text"
+                                 placeholder="Cth : 01.01.11.04.001."
+                                 [formControl]="form.controls['nomor_kode_tanah']"
+                                 [(ngModel)]="nomor_kode_tanah"></ion-input>
+                           </ion-item>
+                           <div *ngIf="form.controls.nomor_kode_tanah.hasError('required')">
+                               <font color="red">Nomor Kode Tanah tidak boleh kosong. Jika tidak ada atau tidak diketahui isi dengan '-'</font>
+                             </div>
+                             
+                        </ion-item-group>
+      
+                  
+                     <ion-item-group>
+                        <ion-item-divider color="light">Gedung Bertingkat?</ion-item-divider>
+                        <ion-item>
+                            
+                         <ion-select [(ngModel)]="bertingkat_tidak" formControlName="bertingkat_tidak">
+                               <ion-option value="Ya">Ya</ion-option>
+                               <ion-option value="Tidak">Tidak</ion-option>
+                          </ion-select>          
+                        </ion-item>
+                        <div *ngIf="form.controls.bertingkat_tidak.hasError('required')">
+                            <font color="red">Harap pilih kondisi</font>
+                          </div>
+                     </ion-item-group>
+
+                     <ion-item-group>
+                           <ion-item-divider color="light">Gedung memiliki konstruksi beton?</ion-item-divider>
+                           <ion-item>
+                               
+                            <ion-select [(ngModel)]="beton_tidak" formControlName="beton_tidak">
+                                  <ion-option value="Ya">Ya</ion-option>
+                                  <ion-option value="Tidak">Tidak</ion-option>
+                             </ion-select>          
+                           </ion-item>
+                           <div *ngIf="form.controls.beton_tidak.hasError('required')">
+                               <font color="red">Harap pilih kondisi</font>
+                             </div>
+                        </ion-item-group>
+               
+                     <ion-item-group>
+                        <ion-item-divider color="light">Luas</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="text"
+                              placeholder="Cth : 120M2"
+                              [formControl]="form.controls['luas']"
+                              [(ngModel)]="luas"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.luas.hasError('required')">
+                            <font color="red">Luas bangunan harus diisi. Jika tidak ada atau tidak diketahui, isi dengan '-'</font>
+                          </div>
+                     </ion-item-group>
+
+
+                     <ion-item-group>
+                           <ion-item-divider color="light">Alamat</ion-item-divider>
+                           <ion-item>
+                              <ion-input
+                                 type="textarea"
+                                 placeholder="Cth : Jln. Teluk Tering No. 1"
+                                 [formControl]="form.controls['alamat']"
+                                 [(ngModel)]="alamat"></ion-input>
+                           </ion-item>
+                           <div *ngIf="form.controls.luas.hasError('required')">
+                               <font color="red">Alamat bangunan harus diisi. Jika tidak ada atau tidak diketahui, isi dengan '-'</font>
+                             </div>
+                        </ion-item-group>
+
+                        
+
+                    
+                     <ion-item-group>
+                        <ion-item-divider color="light">Tahun Pengadaan</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="text"
+                              placeholder="Tahun Pengadaan"
+                              [formControl]="form.controls['tahun_bulan_mulai']"
+                              [(ngModel)]="tahun_bulan_mulai"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.tahun_bulan_mulai.hasError('pattern')">
+                            <font color="red">Tahun Pengadaan harus angka</font>
+                          </div>
+                        <div *ngIf="form.controls.tahun_bulan_mulai.hasError('maxlength') || form.controls.tahun_bulan_mulai.hasError('minlength')">
+                            <font color="red">Tahun Pengadaan harus 4 digit</font>
+                          </div>
+                          <div *ngIf="form.controls.tahun_bulan_mulai.hasError('min')">
+                               <font color="red">Tahun Pengadaan harus lebih besar dari tahun 1989</font>
+                             </div>
+                             <div *ngIf="form.controls.tahun_bulan_mulai.hasError('max')">
+                                  <font color="red">Tahun Pengadaan harus lebih kecil dari tahun sekarang</font>
+                                </div>
+                                <div *ngIf="form.controls.tahun_bulan_mulai.hasError('required')">
+                                     <font color="red">Tahun Pengadaan harus diisi</font>
+                                   </div>
+                     </ion-item-group>
+      
+                  
+                     <ion-item-group>
+                        <ion-item-divider color="light">Nomor Dokumen</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="text"
+                              placeholder="Nomor Dokumen"
+                              [formControl]="form.controls['nomor_dokumen']"
+                              [(ngModel)]="nomor_dokumen"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.nomor_dokumen.hasError('required')">
+                            <font color="red">Nomor Dokumen harus diisi. Jika tidak ada atau tidak diketahui, isi dengan '-'</font>
+                          </div>
+                     </ion-item-group>
+   
+   
+                     <ion-item-group>
+                        <ion-item-divider color="light">Tanggal Dokumen</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="text"
+                              placeholder="Tanggal Dokumen"
+                              [formControl]="form.controls['tanggal_dokumen']"
+                              [(ngModel)]="tanggal_dokumen"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.tanggal_dokumen.hasError('required')">
+                            <font color="red">Tanggal Dokumen harus diisi. Jika tidak ada atau tidak diketahui, isi dengan '-'</font>
+                          </div>
+                     </ion-item-group>
+   
+                     
+                  
+    
+                   
+                     <ion-item-group>
+                        <ion-item-divider color="light">Asal Usul Pembiayaan</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="text"
+                              placeholder="Asal Usul Pembiayaan"
+                              [formControl]="form.controls['asal_usul_pembiayaan']"
+                              [(ngModel)]="asal_usul_pembiayaan"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.asal_usul_pembiayaan.hasError('required')">
+                            <font color="red">Asal-usul harus diisi</font>
+                          </div>
+                          <div *ngIf="form.controls.asal_usul_pembiayaan.hasError('minlength')">
+                               <font color="red">Asal-usul minimal 5 karakter</font>
+                             </div>
+                     </ion-item-group>
+                   
+                     <ion-item-group>
+                        <ion-item-divider color="light">Nilai Kontrak</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="number"
+                              placeholder="Cth : 700000"
+                              [formControl]="form.controls['nilai_kontrak']"
+                              [(ngModel)]="nilai_kontrak"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.nilai_kontrak.hasError('min')">
+                            <font color="red">Harga minimal adalah Rp1</font>
+                          </div>
+                          <div *ngIf="form.controls.nilai_kontrak.hasError('required')">
+                               <font color="red">Harga aset harus diisi</font>
+                             </div>
+                     </ion-item-group>
+
+                     
+
+                       
+                     <ion-item-group>
+                           <ion-item-divider color="light">Status Tanah</ion-item-divider>
+                           <ion-item>
+                              <ion-input
+                                 type="text"
+                                 placeholder="Cth : Hak Pakai atau Sengketa"
+                                 [formControl]="form.controls['status_tanah']"
+                                 [(ngModel)]="status_tanah"></ion-input>
+                           </ion-item>
+                           <div *ngIf="form.controls.status_tanah.hasError('required')">
+                               <font color="red">Status Tanah harus diisi. Jika tidak ada atau tidak diketahui, isi dengan '-'</font>
+                             </div>
+                        </ion-item-group>
+                    
+                     <ion-item-group>
+                        <ion-item-divider color="light">Keterangan</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              type="text"
+                              placeholder="Keterangan"
+                              [formControl]="form.controls['keterangan']"
+                              [(ngModel)]="keterangan"></ion-input>
+                        </ion-item>
+                        <div *ngIf="form.controls.keterangan.hasError('required')">
+                            <font color="red">Keterangan harus diisi. Jika tidak ada atau tidak diketahui, isi dengan '-'</font>
+                          </div>
+                     </ion-item-group>
+                     <ion-item-group>
+                        <ion-item-divider color="light">Kode Lokasi</ion-item-divider>
+                        <ion-item>
+                           <ion-input
+                              readonly="true"
+                              type="text"
+                              placeholder="Kode Lokasi"
+                              formControlName="kode_lokasi"
+                              [(ngModel)]="kode_lokasi"></ion-input>
+                        </ion-item>
+                     </ion-item-group>
+                     <ion-item>
+                        <button
+                           ion-button
+                           color="primary"
+                           text-center
+                           block
+                           [disabled]="!form.valid">Save Entry</button>
+                     </ion-item>
+      
+                  </ion-list>
+      
+               </form>
+            </div>
+         </div>
+    </ion-content>
+    
